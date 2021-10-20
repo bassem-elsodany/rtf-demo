@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rtf-ingress
+  namespace: rtf 
+  annotations:
+    nginx.ingress.kubernetes.io/limit-rpm: "5"
+  labels:
+    business-group: business-group-id
+    environment: environment-id
+spec:
+  ingressClassName: rtf-nginx 
+  tls: 
+  - hosts:
+      - app-name.dev.api-camp.link
+  rules:
+  - host: app-name.dev.api-camp.link 
+    http:
+      paths: 
+      - pathType: Prefix
+        path: /
+        backend: 
+          service:
+            name: service-name
+            port:
+              name: service-port
