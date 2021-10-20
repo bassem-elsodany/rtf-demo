@@ -1,4 +1,5 @@
 ##[1] execute to prepare the env
+
 export CLUSTER_NAME=rtf-cluster-demo
 export AWS_DEFAULT_REGION=eu-west-2
 export AWS_DEFAULT_PROFILE=development
@@ -6,6 +7,7 @@ export AWS_DEFAULT_PROFILE=development
 rm ~/.kube/config
 ---------------------------------------------------------------------------------------------------------
 ##[2] execute to create the cluster
+
 terraform init
 terraform plan
 terraform apply
