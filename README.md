@@ -6,6 +6,8 @@
 
 > export AWS_DEFAULT_PROFILE=development
 
+> export SSL_CERT=arn:aws:acm:eu-west-2:${accountId}:certificate/${acm-id}
+
 > rm ~/.kube/config
 
 ---------------------------------------------------------------------------------------------------------
@@ -38,17 +40,17 @@
 > https://kubernetes.github.io/ingress-nginx/deploy/#aws
 
 ##### INSTALL
-> kubectl apply -f raw-manifests/deploy-tls-termination.yml 
+> envsubst < raw-manifests/deploy-tls-termination.yml | kubectl apply -f -
 
 ---------------------------------------------------------------------------------------------------------
 #### [6] install rtf
 ##### Create runtime fabric from anypoint and get the activiation code 
  
 ##### execute to validate
-> ./rtfctl validate YW55cG9pbnQubXVsZXNvZnQuY29tOjYyY2IyMjg1LTU2ZmQtNDdjOS05ZmE3LWJiM2IyOTVhMzBkMA==
+> ./rtfctl validate YW55cG9pbnQubXVsZXNvZnQuY29tOj5rtYyMjg1LTU2ZmQtNDdjOS05ZmE3IyOTVhMzBkMA==
 
 ##### execute to install
-> ./rtfctl install YW55cG9pbnQubXVsZXNvZnQuY29tOjYyY2IyMjg1LTU2ZmQtNDdjOS05ZmE3LWJiM2IyOTVhMzBkMA== --force-reinstall
+> ./rtfctl install YW55cG9pbnQubXVsZXNvZnQuY29tOj5rtYyMjg1LTU2ZmQtNDdjOS05ZmE3IyOTVhMzBkMA== --force-reinstall
 
 ---------------------------------------------------------------------------------------------------------
 #### [7] install mule license
