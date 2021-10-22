@@ -33,6 +33,15 @@
 #### [4] install fluentd log forwarder
 > envsubst < raw-manifests/fluentd.yml | kubectl apply -f -
 
+##### AWS ES
+> aws es create-elasticsearch-domain \
+  --domain-name rtf-eks-demo-logs \
+  --elasticsearch-version 7.4 \
+  --elasticsearch-cluster-config \
+  InstanceType=t2.small.elasticsearch,InstanceCount=1 \
+  --ebs-options EBSEnabled=true,VolumeType=standard,VolumeSize=10 \
+  --access-policies '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"AWS":["*"]},"Action":["es:*"],"Resource":"*"}]}'
+
 ---------------------------------------------------------------------------------------------------------
 #### [5] install nginx ingress controller
 
