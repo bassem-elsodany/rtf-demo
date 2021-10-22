@@ -81,6 +81,7 @@ set the followings as app env
 
 ##### set default ns
 > export RTF_DEFAULT_NS=a7c90494-197b-4ff9-8e55-5ebc136acd35
+
 > kubectl config set-context --current --namespace=$RTF_DEFAULT_NS
 
 ##### to batch ingress
